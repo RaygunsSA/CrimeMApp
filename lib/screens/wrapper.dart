@@ -1,3 +1,4 @@
+import 'package:crimap_flutter/providers/list_crime_locations.dart';
 import 'package:crimap_flutter/screens/crime_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,11 +15,12 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
     print(user);
     
+    
     // return home or Authenticate user before proceding
     if (user == null){
       return Authenticate();
     } else {
-      return CrimeListScreen();          
+      return CrimeListScreen1();          
     }
     
 

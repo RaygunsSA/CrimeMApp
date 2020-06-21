@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+//import 'package:provider/provider.dart';
 
 import '../models/place.dart';
 import '../services/location_helper.dart';
@@ -37,7 +38,7 @@ class CrimeLocation with ChangeNotifier {
     _items.add(newPlace);
     notifyListeners();
     
-    //TODO ad type of crime and date to db  
+
     DBHelper.insert('places', {
       'id': newPlace.id,
       'title': newPlace.title,

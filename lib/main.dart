@@ -6,6 +6,7 @@ import './screens/wrapper.dart';
 import './services/auth.dart';
 import './models/user.dart';
 import './screens/crime_detail_screen.dart';
+//import './providers/list_crime_locations.dart';
 
 
 void main() => runApp(MyApp());
