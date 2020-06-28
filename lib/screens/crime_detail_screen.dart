@@ -14,9 +14,9 @@ class CrimeDetailScreen extends StatelessWidget {
     final id = ModalRoute.of(context).settings.arguments;
     final selectedPlace = Provider.of<CrimeLocation>(context, listen: false).findById(id);
     return Scaffold(
-      appBar: AppBar(title: Text(selectedPlace.title),
-      ),
+     
       body: Column(children: <Widget>[
+        
         Container(
          height: 250,
          width: double.infinity,
@@ -36,7 +36,7 @@ class CrimeDetailScreen extends StatelessWidget {
           ),  
         ), 
         SizedBox(height:10,),
-        FlatButton(child: Text('Crime Details - View on Map '),
+        FlatButton(child: Text('Edit Crime Details - View on Map '),
         textColor: Theme.of(context).primaryColor ,
         onPressed:(){
           Navigator.of(context).push(

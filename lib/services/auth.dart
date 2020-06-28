@@ -31,9 +31,32 @@ class AuthService{
   }
 
   //sign in with emil & pw
+Future signInWithEmailAndPassword(email, password) async {
+    try{
+      print('switched to Auth SIWP&E');
+      AuthResult result = await _auth.signInWithEmailAndPassword( email: email, password: password );
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    }catch(error){
+      print('switched to Auth SIWP&E');
+      print(error.toString());
+      return null;
+    }
+  }
 
   //register with email & PW
-
+Future createUserWithEmailAndPassword(email, password) async {
+    try{
+      print('switched to Auth CP&E_successful');
+      AuthResult result = await _auth.createUserWithEmailAndPassword( email: email, password: password );
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    }catch(error){
+      print('switched to Auth CP&E_error');
+      print(error.toString());
+      return null;
+    }
+  }
   //Sign out
   Future signOut() async {
     try{

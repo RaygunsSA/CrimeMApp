@@ -33,16 +33,23 @@ class _LocationInputState extends State<LocationInput> {
                                           //user selects current location
   Future<void> _getCurrentUserLocation() async {
     try{
-      final locData = await Location().getLocation();      
-      _showPreview(locData.latitude, locData.longitude);
-      widget.onSelectPlace(locData.latitude, locData.longitude);
+      final locData = await Location().getLocation();   
+        print(locData.latitude);
+        print(locData.longitude);  
+        _showPreview(locData.latitude, locData.longitude);
+      // final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(
+      //   latitude:locData.latitude,
+      //   longitude:locData.longitude,
+      //   );
+   
+      widget.onSelectPlace(locData.latitude,locData.longitude);
     }catch(error){
       return;
     }
   }  
                                             //user selects location on map
   Future<void> _selectOnMap() async{
-    final selectedLocation = await Navigator.of(context).push<LatLng>(
+    final LatLng selectedLocation = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => MapScreen(
           isSelecting: true,
@@ -52,6 +59,7 @@ class _LocationInputState extends State<LocationInput> {
      if (selectedLocation == null){
        return;
      }
+     print(selectedLocation.latitude);
       _showPreview(selectedLocation.latitude,selectedLocation.longitude);
       widget.onSelectPlace(selectedLocation.latitude,selectedLocation.longitude);
   }
@@ -64,6 +72,12 @@ class _LocationInputState extends State<LocationInput> {
           height: 170,
           width: double.infinity,
           alignment: Alignment.center,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width:1,
+              color: Colors.grey,
+              )
+            ),
           child: _previewImageUrl == null? Text(
             'No Location Chosen',
              textAlign: TextAlign.center) : 
@@ -73,10 +87,12 @@ class _LocationInputState extends State<LocationInput> {
                width: double.infinity
                ),
           ),
-          Row(children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
             FlatButton.icon(
               icon: Icon(Icons.location_on),
-              label: Text('Current Location'),
+              label: Text('Current Location2'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _getCurrentUserLocation,             
               ),

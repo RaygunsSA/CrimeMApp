@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/place.dart';
-//import 'package:crimap_flutter/screens/crime_list_screen.dart';
 
 
 //import 'package:path_provider/path_provider.dart';
@@ -55,7 +54,7 @@ class _DiscloseCrimeScreenState extends State<DiscloseCrimeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Disclose a crime'),
+        title: Text('Report a crime'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
